@@ -1,5 +1,5 @@
-# EulerProject
-Solving Euler Project Problems one by one
+# Project Euler Everything
+Solving Project Euler Problems one by one
 
 Problem 1: Finished
 
