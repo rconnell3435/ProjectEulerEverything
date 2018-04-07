@@ -2,7 +2,6 @@ A = [3,5]
 
 function euler1(blist,N)
     B = [0]
-    c = true
     for n = 1:(prod(blist)-1)
         for s in blist
             if n%s == 0 && !(n in B)
