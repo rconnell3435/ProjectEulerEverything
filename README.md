@@ -12,7 +12,6 @@ the product of all bases is a multiple of every base. Call it b'
 Let B = {x : bi%x = 0, 0 <= i <= n, 0 <= x < b'}
 
 B is the list of all multiples of bases inbetween 0 and b'.
-...
 
     B = [0]
     for n = 1:(prod(blist)-1)
@@ -23,8 +22,6 @@ B is the list of all multiples of bases inbetween 0 and b'.
         end
     end
 
-...
-
 This algorithm is O(nb'), so quite slow if the amount/values of bases are large. TO DO: Implement polynomial time algorithm.
 
 Every number N can be expressed as 
@@ -34,8 +31,6 @@ N = qb' + r with 0 <= r < b' by the Division Theorem
 Let S(n) is the sum of all multiples of the bases b1,b2,...bn less than n.
 
 Note: x0 + x1 + x2 + x3 ... + xL = S(b') = Sum of all elements of B. |B| = L
-
-...
 
     S(qb') = 
 
@@ -49,23 +44,18 @@ Note: x0 + x1 + x2 + x3 ... + xL = S(b') = Sum of all elements of B. |B| = L
                                                        S(qb') = (1 + 2 + 3 + ... + (q-1))Lb' + qS(b')
                                                        S(qb') = (q-1)(q)(L)(b')/2 + qS(b')
 
-...
 
 S(N) = S(qb') + (qb' + x0) + (qb' + x1) + (qb' + x2) + (qb'+ x3) ... + all elements in B less than r
 
 These extra terms are computed:
-
-...
 
     for s in B
         if s < r
             summ = summ + s + N - r
         end
     end
-...
 
 With large values of the division by 2 would lead to a rounding error, so I checked if q or q-1 is even. One of them must be, so take that one and perform a logical shift to the right, avoiding dealing with floats in general.
-
 
     if q%2 == 0
         p = q >>> 1
