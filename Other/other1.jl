@@ -1,4 +1,7 @@
+#The Longest Increasing Subsequence Problem
+#as found here: https://www.hackerrank.com/challenges/longest-increasing-subsequent/problem
 
+#Solution does not pass some hackerrank test cases due to timeout
 
 function LIS(L)
     if L == []
@@ -34,5 +37,3 @@ function LIS(L)
 
     return length(N)
 end
-
-println(LIS([15,27,14,38,26,55,46,65,85]))
