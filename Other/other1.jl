@@ -49,7 +49,17 @@ function LISnlogn(L)
     while j <= length(L)
         if L[N[1]] > L[j]
             N[1] = j
-            Ub = Lb
+            Ub = length(N)
+            Lb = 1
+            j = j + 1
+            continue
+        end
+        if L[N[end]] < L[j]
+            push!(N,j)
+            Ub = length(N)
+            Lb = 1
+            j = j + 1
+            continue
         end
         while Ub-Lb > 1
             if L[N[c]] < L[j]
@@ -59,12 +69,7 @@ function LISnlogn(L)
             end
             c = (Ub + Lb) >>> 1
         end
-        if L[N[end]] < L[j]
-            push!(N,j)
-        else
-            N[Ub] = j
-        end
-
+        N[Ub] = j
         Ub = length(N)
         Lb = 1
         j = j + 1
