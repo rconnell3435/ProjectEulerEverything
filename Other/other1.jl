@@ -1,7 +1,4 @@
-#The Longest Increasing Subsequence Problem
-#as found here: https://www.hackerrank.com/challenges/longest-increasing-subsequent/problem
 
-#Solution does not pass some hackerrank test cases due to timeout
 
 function LIS(L)
     if L == []
@@ -37,3 +34,44 @@ function LIS(L)
 
     return length(N)
 end
+
+
+#Unsure if O(nlogn)
+function LISnlogn(L)
+    if L == []
+        return 0
+    end
+    N = [1] #representative list
+    Lb = 1
+    Ub = 1
+    c = 1
+    j = 2
+    while j <= length(L)
+        if L[N[1]] > L[j]
+            N[1] = j
+            Ub = Lb
+        end
+        while Ub-Lb > 1
+            if L[N[c]] < L[j]
+                Lb = c
+            else
+                Ub = c
+            end
+            c = (Ub + Lb) >>> 1
+        end
+        if L[N[end]] < L[j]
+            push!(N,j)
+        else
+            N[Ub] = j
+        end
+
+        Ub = length(N)
+        Lb = 1
+        j = j + 1
+    end
+
+    return length(N)
+end
+
+
+println(LISnlogn([15,27,14,38,26,55,46,65,85]))
