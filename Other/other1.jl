@@ -1,4 +1,8 @@
-
+#Longest Increasing Subsequence
+#The task is to find the length of the longest
+#subsequence in a given array of integers such 
+#that all elements of the subsequence are sorted 
+#in strictly ascending order.
 
 function LIS(L)
     if L == []
@@ -35,8 +39,7 @@ function LIS(L)
     return length(N)
 end
 
-
-#Unsure if O(nlogn)
+#A faster code than above. May be O(nlogn)
 function LISnlogn(L)
     if L == []
         return 0
