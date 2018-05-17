@@ -1,14 +1,18 @@
 #euler 7
 #Given N, find the Nth prime
 
-function NthPrime(N)
-    L = []
+function NthPrime(N,L)
     isprime = true
-    size = 0
-    m = 1
+    K = L
+    size = length(L)
+    if size == 0
+        m = 1
+    else
+        m = L[end]
+    end
     while size < N
         m = m + 1
-        for s in L
+        for s in K
             if s > sqrt(m)
                 break
             end
@@ -18,15 +22,18 @@ function NthPrime(N)
             end
         end
         if isprime == true
-            push!(L,m)
+            push!(K,m)
             size = size + 1
         end
         isprime = true
     end
-    return L[size]
+    return K
 end
 
+M = []
 t = parse(readline(STDIN))
 for q = 1:t
-    println(NthPrime(parse(readline(STDIN))))
+    q = parse(readline(STDIN))
+    M = NthPrime(q,M)
+    println(M[q])
 end
